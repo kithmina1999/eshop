@@ -41,8 +41,8 @@ include "connection.php";
                                 <p class="title02">Create New Account</p>
                             </div>
                             <!-- alert message -->
-                            <div class="col-12">
-                                <div class="d-none alert alert-danger" role="alert" id="msg"></div>
+                            <div class="col-12 d-none" id="msgdiv">
+                                <div class="alert alert-danger" role="alert" id="msg"></div>
                             </div>
                             <!-- first name  -->
                             <div class="col-6">
@@ -108,18 +108,22 @@ include "connection.php";
                             <div class="col-12">
                                 <p class="title02">Sign In to your Account</p>
                             </div>
+                            <!-- alert message -->
+                            <div class="col-12 d-none" id="msgdiv2">
+                                <div class="alert alert-danger" role="alert" id="msg2"></div>
+                            </div>
 
                             <!-- email address -->
                             <div class="col-12">
                                 <label class="form-label">Email</label>
                                 <input type="email" class="form-control" placeholder="ex:- John@example.com" id="email2"
-                                    value="" />
+                                    value="<?php  echo isset($_COOKIE['email']) ? htmlspecialchars($_COOKIE['email']) : ''?>" />
                             </div>
                             <!-- password -->
                             <div class="col-12">
                                 <label class="form-label">Password</label>
                                 <input type="password" class="form-control" placeholder="ex:- ********" id="password2"
-                                    value="" />
+                                    value="<?php echo isset($_COOKIE['password']) ? htmlspecialchars($_COOKIE['password']) : ''  ?>" />
                             </div>
                             <!-- remember me -->
                             <div class="col-6">
