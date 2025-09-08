@@ -137,7 +137,7 @@ include "connection.php";
                                 </div>
                                 <!-- forgot password -->
                                 <div class="col-6 text-end">
-                                    <a href="" class="link-primary">Forgot Password?</a>
+                                    <a href="#" class="link-primary" onclick="forgotPassword();">Forgot Password?</a>
                                 </div>
 
                                 <!-- signin btn -->
@@ -171,17 +171,17 @@ include "connection.php";
                                     <!-- password -->
                                     <div class="col-6">
                                         <label class="form-label">New Password</label>
-                                        <div>
+                                        <div class="input-group mb-3">
                                             <input type="password" class="form-control" id="np" />
-                                            <button id="npb" class="btn btn-outlline-secondary" type="button">Show</button>
+                                            <button id="npb" class="btn btn-outlline-secondary" type="button" onclick="showPassword1();">Show</button>
                                         </div>
                                     </div>
                                     <!-- confirm-password -->
                                     <div class="col-6">
                                         <label class="form-label">Confirm Password</label>
-                                        <div>
+                                        <div  class="input-group mb-3">
                                             <input type="password" class="form-control" id="cnp" />
-                                            <button id="cnpb" class="btn btn-outlline-secondary" type="button">Show</button>
+                                            <button id="cnpb" class="btn btn-outlline-secondary" type="button" onclick="showPassword2();">Show</button>
                                         </div>
                                     </div>
 
@@ -195,7 +195,7 @@ include "connection.php";
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Reset</button>
+                                <button type="button" class="btn btn-primary" onclick="resetPassword();">Reset</button>
                             </div>
 
                         </div>

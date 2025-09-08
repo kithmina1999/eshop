@@ -41,25 +41,69 @@ function signup() {
 
 function signin() {
   var email = document.getElementById("email2").value;
-    var password = document.getElementById("password2").value;
-    var remembarme = document.getElementById("rememberMe").checked;
+  var password = document.getElementById("password2").value;
+  var remembarme = document.getElementById("rememberMe").checked;
 
-    var f = new FormData();
-    f.append("e", email);
-    f.append("p", password);
-    f.append("r", remembarme ? "1" : "0");
+  var f = new FormData();
+  f.append("e", email);
+  f.append("p", password);
+  f.append("r", remembarme ? "1" : "0");
 
-    var req = new XMLHttpRequest();
-    req.onreadystatechange = () => {
-        if (req.readyState == 4 && req.status == 200) {
-            if (req.responseText.trim() === "success") {
-                window.location.href = "home.php";
-            } else {
-                document.getElementById("msg2").innerHTML = req.responseText;
-                document.getElementById("msgdiv2").className = "d-block";
-            }
-        }
-    };
-    req.open("POST", "signinProcess.php", true);
-    req.send(f);
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = () => {
+    if (req.readyState == 4 && req.status == 200) {
+      if (req.responseText.trim() === "success") {
+        window.location.href = "home.php";
+      } else {
+        document.getElementById("msg2").innerHTML = req.responseText;
+        document.getElementById("msgdiv2").className = "d-block";
+      }
+    }
+  };
+  req.open("POST", "signinProcess.php", true);
+  req.send(f);
+}
+var forgotPasswordModal;
+
+function forgotPassword() {
+  var email = document.getElementById("email2").value;
+
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = () => {
+    if (request.readyState == 4 && request.status == 200) {
+      alert(request.responseText);
+    }
+  };
+  request.open("GET", "forgotPasswordProcess.php?e=" + email, true);
+  request.send();
+}
+
+function showPassword1() {
+  var textfield = document.getElementById("np");
+  var button = document.getElementById("npb");
+
+  if (textfield.type === "password") {
+    textfield.type = "text";
+    button.innerText = "Hide";
+  } else {
+    textfield.type = "password";
+    button.innerText = "Show";
+  }
+}
+
+function showPassword2() {
+  var textfield = document.getElementById("cnp");
+  var button = document.getElementById("cnpb");
+
+  if (textfield.type === "password") {
+    textfield.type = "text";
+    button.innerText = "Hide";
+  } else {
+    textfield.type = "password";
+    button.innerText = "Show";
+  }
+}
+
+function resetPassword() {
+  alert("reset password");
 }
