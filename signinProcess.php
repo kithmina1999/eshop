@@ -17,12 +17,13 @@ if (empty($email)) {
     } else {
         $data = $rs->fetch_assoc();
         if ($data["status_id"] == 1) {
-            $_SESSION["u"] = $data;
             session_start();
+            $_SESSION["u"] = $data;
+
             if ($remembarMe == 1) {
-                setcookie("email", $data["email"], time() + 60 * 60 * 24 * 30,);
-                setcookie("password", $data["password"], time() + 60 * 60 * 24 * 30,);
-            }else{
+                setcookie("email", $data["email"], time() + 60 * 60 * 24 * 30, );
+                setcookie("password", $data["password"], time() + 60 * 60 * 24 * 30, );
+            } else {
                 setcookie("email", "", -1, );
                 setcookie("password", "", -1, );
             }
