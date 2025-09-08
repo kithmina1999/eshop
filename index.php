@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "connection.php";
 ?>
 <!DOCTYPE html>
@@ -117,52 +117,102 @@ include "connection.php";
                             <div class="col-12">
                                 <label class="form-label">Email</label>
                                 <input type="email" class="form-control" placeholder="ex:- John@example.com" id="email2"
-                                    value="<?php  echo isset($_COOKIE['email']) ? htmlspecialchars($_COOKIE['email']) : ''?>" />
+                                    value="<?php echo isset($_COOKIE['email']) ? htmlspecialchars($_COOKIE['email']) : '' ?>" />
                             </div>
                             <!-- password -->
                             <div class="col-12">
                                 <label class="form-label">Password</label>
                                 <input type="password" class="form-control" placeholder="ex:- ********" id="password2"
-                                    value="<?php echo isset($_COOKIE['password']) ? htmlspecialchars($_COOKIE['password']) : ''  ?>" />
+                                    value="<?php echo isset($_COOKIE['password']) ? htmlspecialchars($_COOKIE['password']) : '' ?>" />
                             </div>
                             <!-- remember me -->
                             <div class="col-6">
                                 <div class="form-check d-flex align-items-center gap-2 ">
-                                    <input type="checkbox" class="form-check-input" id="rememberMe" />
-                                    <label class="form-check-label">Remember me</label>
+                                    <input type="checkbox" class="form-check-input" id="rememberMe" <?php if (isset($_COOKIE['password']) && isset($_COOKIE['email']))
+                                        echo "checked";
+                                    else
+                                        echo "" ?> />
+                                        <label class="form-check-label">Remember me</label>
+                                    </div>
+                                </div>
+                                <!-- forgot password -->
+                                <div class="col-6 text-end">
+                                    <a href="" class="link-primary">Forgot Password?</a>
+                                </div>
+
+                                <!-- signin btn -->
+                                <div class="col-12 col-lg-6 d-grid">
+                                    <button class="btn btn-primary" onclick="signin();">Sign In</button>
+                                </div>
+                                <!-- Register btn -->
+                                <div class="col-12 col-lg-6 d-grid">
+                                    <button class="btn btn-danger" onclick="changeView();">New to EShop? Sign Up</button>
                                 </div>
                             </div>
-                            <!-- forgot password -->
-                            <div class="col-6 text-end">
-                                <a href="" class="link-primary">Forgot Password?</a>
+                        </div>
+                        <!-- signin box -->
+
+                    </div>
+                </div>
+                <!-- content -->
+
+                <!-- Model -->
+                <div class="modal" tabindex="-1" id="fpmodal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            
+                            <div class="modal-header">
+                                <h5 class="modal-title">Forgot Password</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
-                            <!-- signin btn -->
-                            <div class="col-12 col-lg-6 d-grid">
-                                <button class="btn btn-primary" onclick="signin();">Sign In</button>
+                            <div class="modal-body">
+                                <div class="row g-3">
+                                    <!-- password -->
+                                    <div class="col-6">
+                                        <label class="form-label">New Password</label>
+                                        <div>
+                                            <input type="password" class="form-control" id="np" />
+                                            <button id="npb" class="btn btn-outlline-secondary" type="button">Show</button>
+                                        </div>
+                                    </div>
+                                    <!-- confirm-password -->
+                                    <div class="col-6">
+                                        <label class="form-label">Confirm Password</label>
+                                        <div>
+                                            <input type="password" class="form-control" id="cnp" />
+                                            <button id="cnpb" class="btn btn-outlline-secondary" type="button">Show</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- verification code -->
+                                    <div>
+                                        <label class="form-label">Verification Code</label>
+                                        <input type="text" class="form-control" id="vcode" />
+                                    </div>
+                                </div>
                             </div>
-                            <!-- Register btn -->
-                            <div class="col-12 col-lg-6 d-grid">
-                                <button class="btn btn-danger" onclick="changeView();">New to EShop? Sign Up</button>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Reset</button>
                             </div>
+
                         </div>
                     </div>
-                    <!-- signin box -->
-
                 </div>
-            </div>
-            <!-- content -->
+                <!-- Model -->
 
-            <!-- copyright trade mark -->
-            <div class="col-12 fixed-bottom text-center d-none d-lg-block">
-                <p>&copy; 2025 eShop.lk || All Rights Reserved</p>
-            </div>
+                <!-- copyright trade mark -->
+                <div class="col-12 fixed-bottom text-center d-none d-lg-block">
+                    <p>&copy; 2025 eShop.lk || All Rights Reserved</p>
+                </div>
 
+            </div>
         </div>
-    </div>
-    <script src="bootstrap.js"></script>
-    <script src="script.js"></script>
+        <script src="bootstrap.js"></script>
+        <script src="script.js"></script>
 
-</body>
+    </body>
 
-</html>
+    </html>
