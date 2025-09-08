@@ -71,7 +71,17 @@ function forgotPassword() {
   var request = new XMLHttpRequest();
   request.onreadystatechange = () => {
     if (request.readyState == 4 && request.status == 200) {
-      alert(request.responseText);
+      if (request.responseText === "success") {
+        alert(
+          "Password reset link has been sent to your email. Please check your inbox."
+        );
+        var modal = document.getElementById("fpmodal");
+        forgotPasswordModal = new bootstrap.Modal(modal);
+        forgotPasswordModal.show();
+      } else {
+        document.getElementById("msg2").innerHTML = request.responseText;
+        document.getElementById("msgdiv2").className = "d-block";
+      }
     }
   };
   request.open("GET", "forgotPasswordProcess.php?e=" + email, true);
@@ -105,5 +115,30 @@ function showPassword2() {
 }
 
 function resetPassword() {
-  alert("reset password");
+  var email = document.getElementById("email2").value;
+  var newPassword = document.getElementById("np").value;
+  var confirmNewPassword = document.getElementById("cnp").value;
+  var verificationCode = document.getElementById("vcode").value;
+
+  var f = new FormData();
+  f.append("e", email);
+  f.append("np", newPassword);
+  f.append("cnp", confirmNewPassword);
+  f.append("vc", verificationCode);
+
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = () => {
+    if (request.readyState == 4 && request.status == 200) {
+      if (request.responseText.trim() === "success") {
+        alert(
+          "Password has been reset successfully. Please sign in with your new password."
+        );
+        forgotPasswordModal.hide();
+      } else {
+        alert(request.responseText);
+      }
+    }
+  };
+  request.open("POST", "resetPasswordProcess.php", true);
+  request.send(f);
 }
