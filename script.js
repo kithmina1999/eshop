@@ -142,3 +142,67 @@ function resetPassword() {
   request.open("POST", "resetPasswordProcess.php", true);
   request.send(f);
 }
+
+function signout() {
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = () => {
+    if (req.readyState == 4 && req.status == 200) {
+      if (req.responseText.trim() === "success") {
+        window.location.reload();
+      } else {
+        alert("Error signing out. Please try again.");
+      }
+    }
+  };
+  req.open("GET", "signoutProcess.php", true);
+  req.send();
+}
+
+function changeProfileImage() {
+  var img = document.getElementById("profileimage");
+  img.onchange=()=>{
+    var file = img.files[0];
+    var url = window.URL.createObjectURL(file);
+
+    document.getElementById("img").src = url;
+  }
+}
+
+function updateProfile() {
+  var fname = document.getElementById("fname").value;
+  var lname = document.getElementById("lname").value;
+  var mobile = document.getElementById("mobile").value;
+  var line01 = document.getElementById("line01").value;
+  var line02 = document.getElementById("line02").value;
+  var province = document.getElementById("province").value;
+  var district = document.getElementById("district").value;
+  var city = document.getElementById("city").value;
+  var postal_code = document.getElementById("pcode").value;
+  var profileimage = document.getElementById("profileimage").files[0];
+
+  var f = new FormData();
+  f.append("f", fname);
+  f.append("l", lname);
+  f.append("m", mobile);
+  f.append("l1", line01);
+  f.append("l2", line02);
+  f.append("pv", province);
+  f.append("dt", district);
+  f.append("ct", city);
+  f.append("pc", postal_code);
+  f.append("pi", profileimage);
+
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = () => {
+    if (req.readyState == 4 && req.status == 200) {
+      if (req.responseText === "success") {
+        alert("Profile updated successfully.");
+        window.location.reload();
+      } else {
+        console.log(req.responseText);
+      }
+    }
+  }
+  req.open("POST", "updateUserProfileProcess.php", true);
+  req.send(f);
+}

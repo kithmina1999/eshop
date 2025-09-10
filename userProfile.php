@@ -23,7 +23,7 @@
     <div class="container-fluid">
         <div class="row">
 
-            <!-- <?php include "header.php"; ?> -->
+            <?php include "header.php"; ?>
 
             <div class="col-12 bg-primary">
                 <div class="row">
@@ -34,13 +34,13 @@
                             <div class="col-md-3 border-end">
                                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
 
-                                    <img src="resource/new_user.svg" class="rounded mt-5" style="width: 150px;" />
+                                    <img src="resource/new_user.svg" class="rounded mt-5" style="width: 150px;" id="img" />
 
                                     <span class="fw-bold">Sahan Perera</span>
                                     <span class="fw-bold text-black-50">sahan@gmail.com</span>
 
                                     <input type="file" class="d-none" id="profileimage" />
-                                    <label for="profileimage" class="btn btn-primary mt-5">Update Profile Image</label>
+                                    <label for="profileimage" class="btn btn-primary mt-5" onclick="changeProfileImage();">Update Profile Image</label>
 
                                 </div>
                             </div>
@@ -56,23 +56,23 @@
 
                                         <div class="col-6">
                                             <label class="form-label">First Name</label>
-                                            <input type="text" class="form-control" value="Sahan" />
+                                            <input type="text" class="form-control" value="Sahan" id="fname"/>
                                         </div>
 
                                         <div class="col-6">
                                             <label class="form-label">Last Name</label>
-                                            <input type="text" class="form-control" value="Perera" />
+                                            <input type="text" class="form-control" value="Perera" id="lname"/>
                                         </div>
 
                                         <div class="col-12">
                                             <label class="form-label">Mobile</label>
-                                            <input type="text" class="form-control" value="0771112223" />
+                                            <input type="text" class="form-control" value="0771112223" id="mobile"/>
                                         </div>
 
                                         <div class="col-12">
                                             <label class="form-label">Password</label>
                                             <div class="input-group">
-                                                <input type="password" class="form-control" value="abcdef" readonly />
+                                                <input type="password" class="form-control" value="<?php echo $_SESSION["u"]["password"] ?>" readonly disabled />
                                                 <span class="input-group-text bg-primary" id="basic-addon2">
                                                     <i class="bi bi-eye-slash-fill text-white"></i>
                                                 </span>
@@ -81,28 +81,28 @@
 
                                         <div class="col-12">
                                             <label class="form-label">Email</label>
-                                            <input type="text" class="form-control" readonly value="sahan@gmail.com" />
+                                            <input type="text" class="form-control" readonly value="sahan@gmail.com" disabled />
                                         </div>
 
                                         <div class="col-12">
                                             <label class="form-label">Registered Date</label>
-                                            <input type="text" class="form-control" readonly
+                                            <input type="text" class="form-control" readonly disabled
                                                 value="2023-01-01 12:00:00" />
                                         </div>
 
                                         <div class="col-12">
                                             <label class="form-label">Address Line 01</label>
-                                            <input type="text" class="form-control" />
+                                            <input type="text" class="form-control"  id="line01"/>
                                         </div>
 
                                         <div class="col-12">
                                             <label class="form-label">Address Line 02</label>
-                                            <input type="text" class="form-control" />
+                                            <input type="text" class="form-control" id="line02"/>
                                         </div>
 
                                         <div class="col-6">
                                             <label class="form-label">Province</label>
-                                            <select class="form-select">
+                                            <select class="form-select" id="province">
                                                 <option value="0">Select Province</option>
                                                 <option value="1">Colombo</option>
                                             </select>
@@ -110,7 +110,7 @@
 
                                         <div class="col-6">
                                             <label class="form-label">District</label>
-                                            <select class="form-select">
+                                            <select class="form-select" id="district">
                                                 <option value="0">Select District</option>
                                                 <option value="1">Kaluthara</option>
 
@@ -119,7 +119,7 @@
 
                                         <div class="col-6">
                                             <label class="form-label">City</label>
-                                            <select class="form-select">
+                                            <select class="form-select" id="city">
                                                 <option value="0">Select City</option>
                                                 <option value="1">Kaluthara</option>
 
@@ -128,16 +128,16 @@
 
                                         <div class="col-6">
                                             <label class="form-label">Postal Code</label>
-                                            <input type="text" class="form-control" />
+                                            <input type="text" class="form-control" id="pcode"/>
                                         </div>
 
                                         <div class="col-12">
                                             <label class="form-label">Gender</label>
-                                            <input type="text" class="form-control" value="Male" readonly />
+                                            <input type="text" class="form-control" value="Male" readonly disabled/>
                                         </div>
 
                                         <div class="col-12 d-grid mt-2">
-                                            <button class="btn btn-primary">Update My Profile</button>
+                                            <button class="btn btn-primary" onclick="updateProfile();">Update My Profile</button>
                                         </div>
 
                                     </div>
@@ -157,7 +157,7 @@
                 </div>
             </div>
 
-            <!-- <?php include "footer.php"; ?> -->
+            <?php include "footer.php"; ?>
 
         </div>
     </div>
